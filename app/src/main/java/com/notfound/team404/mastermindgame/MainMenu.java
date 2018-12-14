@@ -4,10 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ListView;
-import android.widget.TextView;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -25,7 +21,7 @@ public class MainMenu extends AppCompatActivity {
             Intent intent = new Intent(this, Gameplay.class);
             startActivity(intent);
         }
-        else if (id.equals("btnCredit")) {
+        else if (id.equals("btnCredits")) {
             Intent intent = new Intent(this, Credits.class);
             startActivity(intent);
         }
