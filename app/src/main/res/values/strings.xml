@@ -3,5 +3,8 @@
 
     <string name="play">Play</string>
     <string name="guide">How to play</string>
-    <string name="credit">Credit</string>
+    <string name="credit">Credits</string>
+    <string name="turn">TURN</string>
+    <string name="answer">CODE</string>
+    <string name="currentTurn">Current Turn: </string>
 </resources>
