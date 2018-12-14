@@ -24,7 +24,9 @@
             android:padding="20dp"
             android:text="@string/play"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:onClick="onClick"
+            android:clickable="true"/>
 
         <TextView
             android:id="@+id/btnGuide"
@@ -32,8 +34,9 @@
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:text="@string/guide"
-            android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:onClick="onClick"
+            android:clickable="true"/>
 
         <TextView
             android:id="@+id/btnCredit"
@@ -42,7 +45,9 @@
             android:padding="20dp"
             android:text="@string/credit"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:onClick="onClick"
+            android:clickable="true"/>
 
 
     </LinearLayout>
