@@ -26,4 +26,13 @@ public class MainMenu extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    public void openCredits(View view) {
+        TextView textView = (TextView)view;
+        String id=getResources().getResourceEntryName(textView.getId());
+        if (id.equals("btnCredit")) {
+            Intent intent = new Intent(this, Credits.class);
+            startActivity(intent);
+        }
+    }
 }
