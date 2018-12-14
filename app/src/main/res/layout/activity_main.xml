@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center|center_horizontal|center_vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/lo_mainmenu"
+        android:id="@+id/lo_mainMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/btnPlay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -23,21 +27,23 @@
             android:textSize="30sp" />
 
         <TextView
+            android:id="@+id/btnGuide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:text="@string/settings"
+            android:text="@string/guide"
             android:textAlignment="center"
             android:textSize="30sp" />
 
         <TextView
+            android:id="@+id/btnCredit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:text="@string/maker"
+            android:text="@string/credit"
             android:textAlignment="center"
             android:textSize="30sp" />
 
 
     </LinearLayout>
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
