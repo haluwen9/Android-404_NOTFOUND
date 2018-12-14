@@ -9,14 +9,14 @@ import java.io.InputStream;
 
 public class Credits extends AppCompatActivity {
 
-    TextView tv_credits =  findViewById(R.id.tv_credits);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
 
-
+        TextView tv_credits =  findViewById(R.id.tv_credits);
         String text = "";
         try {
             InputStream inp = getAssets().open("credits.txt");
