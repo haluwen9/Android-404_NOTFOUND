@@ -1,0 +1,30 @@
+﻿--Description/Rule--
+- Mastermind là một trò chơi giải đố với 2 người chơi, 1 tạo ra một mật mã (thường là chuỗi màu sắc có độ dài 4,...) và 1 phải giải được mật mã đó sau một số bước hữu hạn (thường là 9 bước).
+- Trong mỗi bước chơi:
+	+ Bên giải đố phải đưa ra một test pattern có cùng độ dài với mật mã từ những màu sắc có sẵn.
+	+ Bên ra đề phải chấm điểm pattern của bên giải đố đưa ra trong step đó bằng 2 loại điểm:
+		. Điểm BLACK: Số điểm loại này cho biết có bao nhiêu ô trong test pattern có bao nhiêu ô đúng màu đúng vị trí so với mật mã.
+		. Điểm WHITE: Số điểm loại này cho biết trừ những ô đã được tính vào điểm BLACK trong test pattern, ô nào cùng màu với những ô trong mật mã chưa được tính vào điểm BLACK (nghĩa là đúng màu nhưng sai vị trí) sẽ được tính vào điểm WHITE.
+- Sau số bước giới hạn mà bên giải đố chưa giải được mật mã thì sẽ thua ván đó.
+
+- Ví dụ về 1 ván mastermind:
+Cho 6 màu sau:
+W, B, G, R, Y, O
+
+Mật mã cần giải:
+RBBO (độ dài 4)
+
+Quá trình giải đố / Điểm (BLACK) | [WHITE] mỗi lượt
+WW(B)[B] / 1|1
+WGWG / 0|0
+[B][R](B)R / 1|2
+(B)(R)Y(B) / 0|3
+RBBO / 4|0
+
+--Coding--
+- Mastermind khi chuyển thành phần mềm trò chơi trên máy tính thì chỉ còn là trò chơi 1 người, vì thao tác ra đề sẽ do phần mềm đảm nhận.
+- Người chơi có thể tùy chỉnh độ khó dễ của ván bằng các tùy chọn sau:
+	+ Tăng / giảm số lượng màu (mặc định là 6)
+	+ Tăng / giảm độ dài của chuỗi mật mã (mặc định là 4)
+	+ Tăng / giảm số lượng bước giới hạn (mặc định là số lượng màu + độ dài chuỗi mật mã - 1)
+	+ Đặt thời gian cho mỗi bước suy luận (mặc định là không đặt thời gian)
