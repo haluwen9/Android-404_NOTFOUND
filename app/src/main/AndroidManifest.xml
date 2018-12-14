@@ -18,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Gameplay"></activity>
-        <activity android:name=".Credits"></activity>
+        <activity android:name=".Gameplay" />
+        <activity android:name=".Credits" />
+        <activity android:name=".Guide"></activity>
     </application>
 
 </manifest>

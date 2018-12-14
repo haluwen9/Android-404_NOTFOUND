@@ -29,6 +29,10 @@ public class MainMenu extends AppCompatActivity {
             Intent intent = new Intent(this, Credits.class);
             startActivity(intent);
         }
+        else if (id.equals("btnGuide")) {
+                Intent intent = new Intent(this, Guide.class);
+                startActivity(intent);
+        }
     }
 
 }
