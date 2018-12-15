@@ -10,7 +10,7 @@ import android.view.View;
 
 public class Gameplay extends AppCompatActivity {
     protected static final int[] Colors = {
-            0xCCFFFFFF, 0xCCFF0000, 0xCC00FF00, 0xCC0000FF, 0xCCFFFF00, 0xCCFF00FF, 0xCC00FFFF, 0xCC000000
+            0x55FFFFFF, 0x55FF0000, 0x5500FF00, 0x550000FF, 0x55FFFF00, 0x55FF00FF, 0x5500FFFF, 0x55000000
     };
     protected static final int[][] colorStates = new int[][] {
             new int[] { android.R.attr.state_enabled}, // enabled
@@ -41,7 +41,7 @@ public class Gameplay extends AppCompatActivity {
         selectedColor = Colors[0];
         for (int i = 0; i < 8; ++i) {
             int btnColorId = this.getResources().getIdentifier("color"+i, "id", this.getPackageName());
-            int[] colors = new int[] {Colors[i], Color.GRAY, Color.GRAY, Colors[i]+(0x33<<24)};
+            int[] colors = new int[] {Colors[i], Color.GRAY, Color.GRAY, Colors[i]+(0xAA<<24)};
             AppCompatButton tmp = findViewById(btnColorId);
             tmp.setBackgroundTintList(new ColorStateList(colorStates, colors));
         }
