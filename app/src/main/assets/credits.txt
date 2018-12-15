@@ -1,17 +1,17 @@
 ﻿ĐHSP - CNTT D
 ~*~*~*~*~*~*~*~*~*~*~*
 
-Giảng viên hướng dẫn:
+Instructor:
 Nguyễn Đỗ Thái Nguyên
 
 ~*~*~*~*~*~*~*~*~*~*~*
-Sinh viên thực hiện:
+Creators:
 Vương Lê Minh Nguyên
-   43.01.104.117
+43.01.104.117
 
 Lương Công Tâm
- 43.01.104.157
+43.01.104.157
 
- Lê Tấn Khôi
+Lê Tấn Khôi
 43.01.104.084
 
