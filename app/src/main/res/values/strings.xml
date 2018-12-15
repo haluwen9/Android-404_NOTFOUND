@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mastermind Game</string>
+    <string name="app_name">Mastermind</string>
 
     <string name="play">Play</string>
     <string name="guide">How to play</string>

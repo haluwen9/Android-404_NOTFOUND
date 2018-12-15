@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Log;
 import android.view.View;
 
 
@@ -28,6 +29,7 @@ public class Gameplay extends AppCompatActivity {
 
     protected int[] answer;
     protected int[] answer_white;
+    protected int[][] gameBoard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +43,11 @@ public class Gameplay extends AppCompatActivity {
         selectedColor = Colors[0];
         for (int i = 0; i < 8; ++i) {
             int btnColorId = this.getResources().getIdentifier("color"+i, "id", this.getPackageName());
-            int[] colors = new int[] {Colors[i], Color.GRAY, Color.GRAY, Colors[i]+(0xAA<<24)};
             AppCompatButton tmp = findViewById(btnColorId);
-            tmp.setBackgroundTintList(new ColorStateList(colorStates, colors));
+            tmp.setBackgroundTintList(new ColorStateList(colorStates, new int[] {Colors[i], Color.GRAY, Color.GRAY, Colors[i]+(0xAA<<24)}));
         }
         generateRandomAnswer();
+        initGameBoard();
     }
 
     public void generateRandomAnswer() {
@@ -57,8 +59,29 @@ public class Gameplay extends AppCompatActivity {
         }
     }
 
-    public void pickColor(View view) {
+    public void initGameBoard() {
+        gameBoard = new int[maxTurn][maxLength];
+        for (int i = 0; i < maxTurn; ++i) {
+            for (int j = 0; j < maxLength; ++j) {
+                gameBoard[i][j] = 0;
+            }
+        }
+        for (int i = 1; i <= maxLength; ++i) {
+            for (char j = 'A'; j < 'A' + maxLength; ++j) {
+                int btnId = this.getResources().getIdentifier(String.valueOf(j)+i, "id", this.getPackageName());
+                AppCompatButton tmp = findViewById(btnId);
+                tmp.setBackgroundTintList(new ColorStateList(colorStates, new int[] {selectedColor, selectedColor, selectedColor, selectedColor+(0xAA<<24)}));
+            }
+        }
+    }
 
+    public void pickColor(View view) {
+        String id=getResources().getResourceEntryName(view.getId());
+        selectedColor = Colors[Integer.parseInt(id.substring(id.length()-1))];
+//        Log.d("--Debug--", "pickColor: "+selectedColor);
+        int currentAddressId = this.getResources().getIdentifier(currentAddress, "id", this.getPackageName());
+        AppCompatButton tmp = findViewById(currentAddressId);
+        tmp.setBackgroundTintList(new ColorStateList(colorStates, new int[] {selectedColor, selectedColor, selectedColor, selectedColor+(0xAA<<24)}));
     }
 
     public void selectCell(View view) {

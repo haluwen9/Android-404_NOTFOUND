@@ -12,7 +12,8 @@
         >
         <activity
             android:name=".MainMenu"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,10 +22,13 @@
         </activity>
         <activity android:name=".Gameplay"
             android:launchMode="singleTop"/>
+                  android:screenOrientation="portrait"/>
         <activity android:name=".Credits"
             android:launchMode="singleTop"/>
+                  android:screenOrientation="portrait"/>
         <activity android:name=".Guide"
             android:launchMode="singleTop"></activity>
+                  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
