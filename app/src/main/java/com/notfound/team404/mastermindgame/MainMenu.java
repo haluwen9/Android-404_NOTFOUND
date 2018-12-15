@@ -1,9 +1,11 @@
 package com.notfound.team404.mastermindgame;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainMenu extends AppCompatActivity {
 
