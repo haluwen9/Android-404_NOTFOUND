@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.notfound.team404.mastermindgame">
+          package="com.notfound.team404.mastermindgame">
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
-        <activity
-            android:name=".MainMenu"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.AppCompat">
+        <activity
+                android:name=".MainMenu"
+                android:label="@string/app_name"
+                android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Gameplay"
+        <activity
+                android:name=".Gameplay"
                 android:launchMode="singleTop"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".Credits"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".Credits"
                 android:launchMode="singleTop"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".Guide"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".Guide"
                 android:launchMode="singleTop"
-                  android:screenOrientation="portrait"/>/>
-
+                android:screenOrientation="portrait"/>
+        />
     </application>
 
 </manifest>

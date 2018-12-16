@@ -1,5 +1,6 @@
 package com.notfound.team404.mastermindgame;
 
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Gameplay extends AppCompatActivity {
@@ -37,19 +39,34 @@ public class Gameplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameplay);
+
+
+        // Init Methods:
+        initDefaultSettings();
+        generateRandomAnswer();
+        initGameBoard();
+
+        // Display Methods:
+        fillColorPicker();
+        fillAnswer();
+        fillGameBoard();
+    }
+
+    public void initDefaultSettings() {
         maxTurn = 15;
         maxColor = 8;
         maxLength = 8;
         currentTurn = 1;
         currentAddress = "A1";
         selectedColor = 0;
-        for (int i = 0; i < 8; ++i) {
+    }
+
+    public void fillColorPicker() {
+        for (int i = 0; i < maxColor; ++i) {
             int btnColorId = this.getResources().getIdentifier("color"+i, "id", this.getPackageName());
             AppCompatButton tmp = findViewById(btnColorId);
             tmp.setBackgroundTintList(new ColorStateList(colorStates, new int[] {Colors[i], Colors[i], Colors[i], Colors[i]+(0xAA<<24)}));
         }
-        generateRandomAnswer();
-        initGameBoard();
     }
 
     public void generateRandomAnswer() {
@@ -59,12 +76,16 @@ public class Gameplay extends AppCompatActivity {
             // Generate Code Values:
             answer[i] = (int)(Math.round(Math.random()*1000)%maxColor);
             answer_white[answer[i]] += 1;
+        }
+    }
+
+    public void fillAnswer() {
+        for (int i = 0; i < maxLength; ++i) {
             // Generate Code Colors from Code Values:
             int btnId = this.getResources().getIdentifier(String.valueOf((char)('A'+i))+"C", "id", this.getPackageName());
             AppCompatButton tmp = findViewById(btnId);
             tmp.setBackgroundTintList(new ColorStateList(colorStates, new int[] {Colors[answer[i]], Colors[answer[i]], Colors[answer[i]], Colors[answer[i]]+(0xAA<<24)}));
         }
-
     }
 
     public void initGameBoard() {
@@ -76,6 +97,9 @@ public class Gameplay extends AppCompatActivity {
                 gameBoard[i][j] = 0;
             }
         }
+    }
+
+    public void fillGameBoard() {
         for (int i = 1; i <= maxTurn; ++i) {
             for (char j = 'A'; j < 'A' + maxLength; ++j) {
                 int btnId = this.getResources().getIdentifier(String.valueOf(j)+i, "id", this.getPackageName());
@@ -87,18 +111,22 @@ public class Gameplay extends AppCompatActivity {
 
     public void pickColor(View view) {
         String id=getResources().getResourceEntryName(view.getId());
-        selectedColor = Integer.parseInt(id.substring(id.length()-1));
-//        Log.d("--Debug--", "pickColor: "+selectedColor);
-//        int currentAddressId = this.getResources().getIdentifier(currentAddress, "id", this.getPackageName());
-//        AppCompatButton tmp = findViewById(currentAddressId);
-//        tmp.setBackgroundTintList(new ColorStateList(colorStates, new int[] {Colors[selectedColor], Colors[selectedColor], Colors[selectedColor], Colors[selectedColor]+(0xAA<<24)}));
+        int color = Integer.parseInt(id.substring(id.length()-1));
+        if (color < maxColor) {
+            selectedColor = color;
+//            Log.d("--Debug--", "pickColor: "+selectedColor);
+//            int currentAddressId = this.getResources().getIdentifier(currentAddress, "id", this.getPackageName());
+//            AppCompatButton tmp = findViewById(currentAddressId);
+//            tmp.setBackgroundTintList(new ColorStateList(colorStates, new int[] {Colors[selectedColor], Colors[selectedColor], Colors[selectedColor], Colors[selectedColor]+(0xAA<<24)}));
+        }
     }
 
     public void selectCell(View view) {
         String id=getResources().getResourceEntryName(view.getId());
         int turn = Integer.parseInt(id.substring(1));
-        if (turn == currentTurn) {
-            gameBoard[turn-1][id.charAt(0)-'A'] = selectedColor;
+        int pos = id.charAt(0)-'A';
+        if (turn == currentTurn && pos < maxLength) {
+            gameBoard[turn-1][pos] = selectedColor;
 //            Log.d("--Debug--", String.valueOf(id.charAt(0)-'A'));
             currentAddress = id;
             view.setBackgroundTintList(new ColorStateList(colorStates, new int[] {Colors[selectedColor], Colors[selectedColor], Colors[selectedColor], Colors[selectedColor]+(0xAA<<24)}));
@@ -111,6 +139,7 @@ public class Gameplay extends AppCompatActivity {
         if (resultBlack[currentTurn-1] == maxLength) {
             result = "Victory!";
             findViewById(R.id.Answer).setVisibility(View.VISIBLE);
+            Toast.makeText(this, "Victory!", Toast.LENGTH_LONG).show();
         }
         else if (currentTurn < maxTurn) {
             currentTurn += 1;
@@ -120,6 +149,7 @@ public class Gameplay extends AppCompatActivity {
         else {
             result = "Defeat!";
             findViewById(R.id.Answer).setVisibility(View.VISIBLE);
+            Toast.makeText(this, "Defeat!", Toast.LENGTH_LONG).show();
         }
         TextView tvLblGameState = findViewById(R.id.lblGameState);
         tvLblGameState.setText(result);
