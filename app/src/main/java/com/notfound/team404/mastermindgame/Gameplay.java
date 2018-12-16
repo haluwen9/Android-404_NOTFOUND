@@ -1,7 +1,6 @@
 package com.notfound.team404.mastermindgame;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -66,7 +65,7 @@ public class Gameplay extends AppCompatActivity {
         fillAnswer();
         fillGameBoard();
 
-        Log.d("--Debug Gameplay--", "onCreate: maxLength="+maxLength+" maxColor="+maxColor+" maxTurn="+maxTurn);
+//        Log.d("--Debug Gameplay--", "onCreate: maxLength="+maxLength+" maxColor="+maxColor+" maxTurn="+maxTurn);
     }
 
     public void initDefaultValues() {
@@ -184,7 +183,7 @@ public class Gameplay extends AppCompatActivity {
         }
         for (int i = 0; i < maxLength; ++i) {
             int tmp = gameBoard[currentTurn-1][i];
-            Log.d("--Debug--", "tmp: "+tmp+" -- i: "+i);
+//            Log.d("--Debug--", "tmp: "+tmp+" -- i: "+i);
             if (tmp != answer[i] && whiteCheck[tmp] < answer_white[tmp]) {
                 whiteCheck[tmp] += 1;
                 resultWhite[currentTurn-1] += 1;

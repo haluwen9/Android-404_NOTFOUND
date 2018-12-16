@@ -88,7 +88,7 @@
             app:layout_constraintTop_toTopOf="@+id/tv_maxLength"
             app:layout_constraintBottom_toBottomOf="@+id/tv_maxLength"
             app:layout_constraintStart_toEndOf="@+id/tv_maxLength" android:layout_marginStart="8dp"/>
-    <Button
+    <android.support.v7.widget.AppCompatButton
             android:onClick="startNewGame"
             android:text="Start New Game"
             android:layout_width="wrap_content"

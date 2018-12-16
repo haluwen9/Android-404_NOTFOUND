@@ -14,4 +14,5 @@
     <string name="settingMaxTurn">Maximum Amount of Turns: </string>
     <string name="settingMaxColor">Maximum Amount of Colors: </string>
     <string name="settingMaxLength">Maximum Length of Code: </string>
+    <string name="startNewGame">Start New Game</string>
 </resources>

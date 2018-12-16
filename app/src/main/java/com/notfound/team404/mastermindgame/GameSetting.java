@@ -103,7 +103,7 @@ public class GameSetting extends AppCompatActivity {
         maxLength = 8;
     }
 
-    protected void startNewGame(View view) {
+    public void startNewGame(View view) {
         Intent intent = new Intent(this, Gameplay.class);
         intent.putExtra("maxTurn", maxTurn);
         intent.putExtra("maxLength", maxLength);
