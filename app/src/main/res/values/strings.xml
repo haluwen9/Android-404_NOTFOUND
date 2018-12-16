@@ -1,6 +1,18 @@
 <resources>
-    <string name="app_name">Mastermind Game</string>
+    <string name="app_name">Mastermind</string>
 
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="play">Play</string>
+    <string name="guide">How to play</string>
+    <string name="credit">Credits</string>
+    <string name="turn">TURN</string>
+    <string name="answer">CODE</string>
+    <string name="currentTurn">Current Turn</string>
+    <string name="colorPicker">Color Picker</string>
+    <string name="submit">Submit</string>
+    <string name="reset">Reset</string>
+    <string name="gameSettings">Game Settings</string>
+    <string name="settingMaxTurn">Maximum Amount of Turns: </string>
+    <string name="settingMaxColor">Maximum Amount of Colors: </string>
+    <string name="settingMaxLength">Maximum Length of Code: </string>
+    <string name="startNewGame">Start New Game</string>
 </resources>
