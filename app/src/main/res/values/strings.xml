@@ -10,4 +10,8 @@
     <string name="colorPicker">Color Picker</string>
     <string name="submit">Submit</string>
     <string name="reset">Reset</string>
+    <string name="gameSettings">Game Settings</string>
+    <string name="settingMaxTurn">Maximum Amount of Turns: </string>
+    <string name="settingMaxColor">Maximum Amount of Colors: </string>
+    <string name="settingMaxLength">Maximum Length of Code: </string>
 </resources>

@@ -20,7 +20,7 @@ public class MainMenu extends AppCompatActivity {
     public void onClick(View view) {
         String id=getResources().getResourceEntryName(view.getId());
         if (id.equals("btnPlay")) {
-            Intent intent = new Intent(this, Gameplay.class);
+            Intent intent = new Intent(this, GameSetting.class);
             startActivity(intent);
         }
         else if (id.equals("btnCredits")) {

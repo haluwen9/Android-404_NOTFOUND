@@ -1,5 +1,6 @@
 package com.notfound.team404.mastermindgame;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.support.v7.app.AppCompatActivity;
@@ -40,9 +41,23 @@ public class Gameplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameplay);
 
+        if (getIntent().hasExtra("maxTurn"))
+            maxTurn = getIntent().getIntExtra("maxTurn", 0);
+        else
+            maxTurn = 15;
+
+        if (getIntent().hasExtra("maxColor"))
+            maxColor = getIntent().getIntExtra("maxColor", 0);
+        else
+            maxColor = 8;
+
+        if (getIntent().hasExtra("maxLength"))
+            maxLength = getIntent().getIntExtra("maxLength", 0);
+        else
+            maxLength = 8;
 
         // Init Methods:
-        initDefaultSettings();
+        initDefaultValues();
         generateRandomAnswer();
         initGameBoard();
 
@@ -50,12 +65,11 @@ public class Gameplay extends AppCompatActivity {
         fillColorPicker();
         fillAnswer();
         fillGameBoard();
+
+        Log.d("--Debug Gameplay--", "onCreate: maxLength="+maxLength+" maxColor="+maxColor+" maxTurn="+maxTurn);
     }
 
-    public void initDefaultSettings() {
-        maxTurn = 15;
-        maxColor = 8;
-        maxLength = 8;
+    public void initDefaultValues() {
         currentTurn = 1;
         currentAddress = "A1";
         selectedColor = 0;
@@ -65,6 +79,7 @@ public class Gameplay extends AppCompatActivity {
         for (int i = 0; i < maxColor; ++i) {
             int btnColorId = this.getResources().getIdentifier("color"+i, "id", this.getPackageName());
             AppCompatButton tmp = findViewById(btnColorId);
+            tmp.setVisibility(View.VISIBLE);
             tmp.setBackgroundTintList(new ColorStateList(colorStates, new int[] {Colors[i], Colors[i], Colors[i], Colors[i]+(0xAA<<24)}));
         }
     }
@@ -156,7 +171,7 @@ public class Gameplay extends AppCompatActivity {
     }
 
     public void judgeCurrentTurn() {
-        int[] whiteCheck = new int[maxLength];
+        int[] whiteCheck = new int[maxColor];
         resultBlack[currentTurn-1] = 0;
         resultWhite[currentTurn-1] = 0;
         for (int i = 0; i < maxLength; ++i) {
@@ -169,6 +184,7 @@ public class Gameplay extends AppCompatActivity {
         }
         for (int i = 0; i < maxLength; ++i) {
             int tmp = gameBoard[currentTurn-1][i];
+            Log.d("--Debug--", "tmp: "+tmp+" -- i: "+i);
             if (tmp != answer[i] && whiteCheck[tmp] < answer_white[tmp]) {
                 whiteCheck[tmp] += 1;
                 resultWhite[currentTurn-1] += 1;
@@ -181,6 +197,8 @@ public class Gameplay extends AppCompatActivity {
     }
 
     public void resetGame(View view) {
-        this.recreate();
+        Intent intent = new Intent(this, GameSetting.class);
+        startActivity(intent);
+        finish();
     }
 }
